@@ -11,7 +11,7 @@ so i know how much aprox i can spend on grocerys.
 #### Logic
 - [x] Crate the clases Week and Expenses.
 - [x] Week can have more than one Expenses.
-- [ ] User input CLI
+- [x] User input CLI
 
 #### DB
 - [ ] Add sqlite db
