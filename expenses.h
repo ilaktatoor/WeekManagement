@@ -1,7 +1,7 @@
 #ifndef EXPENSES_H
 #define EXPENSES_H
 
-#include <stddef.h>
+#include <stddef.h> //for size_t
 #define MAX_INPUT_SIZE 256 // Define MAX_INPUT_SIZE with your desired maximum size
 //struct declarations
   
@@ -25,6 +25,12 @@ void addExpense(WeekClass* week, const char* expense_description, float expense_
 void get_input(char* prompt, char* input, size_t size );
 float get_float_input(char* promt);
 
+//db functions
+
+void initialize_db();
+void create_table_if_not_exist();
+void insert_expense(const char* description, float amount);
+void close_db();
 
 #endif // DEBUG
        //
