@@ -8,7 +8,7 @@ CFLAGS = -Wall -Wextra -std=c11
 TARGET = gastos_program
 
 # Define the source files
-SRCS = main.c gastos.c
+SRCS = main.c expenses.c
 
 # Define the object files
 OBJS = $(SRCS:.c=.o)
@@ -34,4 +34,3 @@ run: $(TARGET)
 
 # Declare phony targets
 .PHONY: all clean run
-

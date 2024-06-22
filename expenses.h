@@ -1,21 +1,29 @@
-#ifdef EXPENSES_H
+#ifndef EXPENSES_H
 #define EXPENSES_H
 
-typedef struct{
+//struct declarations
+  
+ typedef struct{
 
   char description[255];
   float amount;
 
-}Expense;
+} ExpenseClass;
 
-typedef{
+typedef struct{
 
   char name[255];
-  Expense* expenses;
+  ExpenseClass* expenses;
   int num_expenses;
 
-}Week;
+} WeekClass;
 
-void addExpense(Week* week, const char* expense_description, float expense_amount);
+//function declarations
+void addExpense(WeekClass* week, const char* expense_description, float expense_amount);
 
 #endif // DEBUG
+       //
+       //
+       //
+       //
+       // rootatkali
