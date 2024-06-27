@@ -1,5 +1,4 @@
 #include "expenses.h"
-#include <linux/limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,35 +6,41 @@
 
 
 int main(){
-  WeekClass semana1;
+  sqlite3 *db;
+  initialize_db(&db);
+  create_table_if_not_exist(db);
 
-  // get user input
-  get_input("enter name of the week: ",semana1.name, sizeof(semana1.name));
-  semana1.expenses=NULL;
+  WeekClass semana1;
+  get_input("Enter the name of the week: ", semana1.name, sizeof(semana1.name));
+  semana1.expenses = NULL;
   semana1.num_expenses = 0;
 
-  // add expenses
-  char add_more = 'y';
-  while(add_more == 'y' || add_more == 'Y'){
+  char description[MAX_INPUT_SIZE];
+  float amount;
 
-    char description[MAX_INPUT_SIZE];
-    get_input("Expense description: ", description, sizeof(description));
-    float amout = get_float_input("Expense Amout: $");
-    addExpense(&semana1, description, amout);
+  while (1){
+    get_input("Enter expense description (or 'exit' to finish): ", description, sizeof(description));
 
-    printf("Do you want to add anther expense? (y/n): ");
-    scanf("%c",&add_more);
-    getchar();
+    if (strcmp(description, "exit")==0) {
+      break;    
+    }
+
+    printf("Enter expense amount: ");
+    scanf("%f",&amount);
+
+    while(getchar() != '\n');
+
+    addExpense(&semana1, description, amount);
+    insert_expense(db, description, amount);
 
   }
+  for(int i = 0; i< semana1.num_expenses; i++){
+    printf("Expense %d: %s, %.2f\n",i+1,semana1.expenses[i].description,semana1.expenses[i].amount);
 
-  for(int i = 0; i<semana1.num_expenses; i++ ){
-    printf("Expense %d: %s, %.2f\n",i + 1,semana1.expenses[i].description,semana1.expenses[i].amount);  
   }
-
   free(semana1.expenses);
-  return(0);
-
+  sqlite3_close(db);
+  return 0;
 }
 
 

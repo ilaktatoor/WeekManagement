@@ -1,36 +1,37 @@
-# Define the compiler
+# Compiler
 CC = gcc
 
-# Define compiler flags
+# Compiler flags
 CFLAGS = -Wall -Wextra -std=c11
 
-# Define the target executable
-TARGET = gastos_program
+# SQLite3 library
+LIBS = -lsqlite3
 
-# Define the source files
-SRCS = main.c expenses.c
+# Source files
+SRC = main.c expenses.c database.c
 
-# Define the object files
-OBJS = $(SRCS:.c=.o)
+# Header files
+HEADERS = expenses.h database.h
 
-# Default target
-all: $(TARGET)
+# Object files
+OBJ = $(SRC:.c=.o)
 
-# Rule to link the object files into the final executable
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+# Output executable
+EXEC = expenses_app
 
-# Rule to compile source files into object files
-%.o: %.c
+# Build target
+all: $(EXEC)
+
+# Link object files to create the executable
+$(EXEC): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
+
+# Compile source files into object files
+%.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Rule to clean up the build
+# Clean up generated files
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJ) $(EXEC)
 
-# Rule to run the program
-run: $(TARGET)
-	./$(TARGET)
-
-# Declare phony targets
-.PHONY: all clean run
+.PHONY: all clean
