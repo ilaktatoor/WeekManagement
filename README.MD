@@ -17,7 +17,7 @@ so i know how much aprox i can spend on grocerys.
 - [x] Add sqlite db
 - [x] Add sqlite tables
 - [x] Send the data
-- [ ] Week tables so i can store diretents weeks
+- [ ] Week tables so i can store diferents weeks
 - [ ] Select week to add Expenses to 
 - [ ] Edit regiters of the week 
 - [ ] Show expenses of the week
