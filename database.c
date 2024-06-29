@@ -84,7 +84,7 @@ void show_expenses_of_week(sqlite3 *db, int week_id){
   while(sqlite3_step(stmt) == SQLITE_ROW){
     int id = sqlite3_column_int(stmt, 0);
     const unsigned char *description = sqlite3_column_text(stmt, 1);
-    float amout = sqlite3_column_duoble(stmt, 2);
+    float amout = sqlite3_column_double(stmt, 2);
     printf("Expense id: %d, Description: %s, Amount: %.2f\n",id,description,amout);
 
   }
