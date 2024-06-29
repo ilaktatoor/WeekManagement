@@ -91,3 +91,24 @@ void show_expenses_of_week(sqlite3 *db, int week_id){
   sqlite3_finalize(stmt);
 
 }
+
+void list_weeks(sqlite3 *db){
+  const char *sql = "SELECT id, name FROM weeks;";
+  sqlite3_stmt *stmt;
+  int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
+
+  if(rc != SQLITE_OK){
+    fprintf(stderr, "[!] SQL err: %s\n",sqlite3_errmsg(db));
+    return;
+  }
+
+  while (sqlite3_step(stmt) == SQLITE_ROW) {
+    int id = sqlite3_column_int(stmt, 0);
+    const unsigned char *name = sqlite3_column_text(stmt, 1);
+    printf("Week id: %d, Week name: %s",id, name);
+  
+  }
+
+  sqlite3_finalize(stmt);
+  
+}
