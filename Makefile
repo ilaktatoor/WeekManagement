@@ -11,7 +11,7 @@ LIBS = -lsqlite3
 SRC = main.c expenses.c database.c
 
 # Header files
-HEADERS = expenses.h database.h
+HEADERS = expenses.h 
 
 # Object files
 OBJ = $(SRC:.c=.o)
