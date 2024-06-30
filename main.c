@@ -10,7 +10,7 @@ int main(){
   initialize_db(&db);
   
   while (1) {
-    printf("\n 1. Add week\n 2. Select week to add expense\n3. Edit expense\n4. Show expenses of a week\n5. List weeks\n6. Exit\n");
+    printf("\n1. Add week\n2. Select week to add expense\n3. Edit expense\n4. Show expenses of a week\n5. List weeks\n6. Exit\n");
     int choise;
     printf("Enter your choise:");
     scanf("%d",&choise);
