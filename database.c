@@ -1,5 +1,4 @@
 #include "expenses.h"
-#include <cstddef>
 #include <sqlite3.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -42,7 +41,7 @@ void create_table_if_not_exist(sqlite3 *db){
 }  
 
 void insert_expense(sqlite3 *db,const char* description, float amout){
-  char sql[256];
+  char sql[MAX_INPUT_SIZE];
   snprintf(sql, sizeof(sql), "INSERT INTO expenses(description, amout) VALUES ('%s',%.2f);", description, amout);
 
   char *errmsg = NULL;
@@ -52,7 +51,7 @@ void insert_expense(sqlite3 *db,const char* description, float amout){
 
 
 void insert_week_to_db(sqlite3 *db, const char* week_name){
-    char sql[256];
+    char sql[MAX_INPUT_SIZE];
     snprintf(sql, sizeof(sql), "INSERT INTO weeks (name) VALUES ('%s');",week_name);
     char *errmsg = NULL;
     int rc = sqlite3_exec(db, sql, NULL, 0, &errmsg);
@@ -60,7 +59,7 @@ void insert_week_to_db(sqlite3 *db, const char* week_name){
 }
 
 void edit_expense_on_db(sqlite3 *db, int expense_id, const char *new_expense_descriptoin, float new_amount){
-  char sql[256];
+  char sql[MAX_INPUT_SIZE];
   snprintf(sql, sizeof(sql), "UPDATE expenses SET description = '%s', amout = '%.2f' WHERE id = %d;",new_expense_descriptoin,new_amount,expense_id);
 
   char *errmsg;
@@ -70,7 +69,7 @@ void edit_expense_on_db(sqlite3 *db, int expense_id, const char *new_expense_des
 } 
 
 void show_expenses_of_week(sqlite3 *db, int week_id){
-  char sql[256];
+  char sql[MAX_INPUT_SIZE];
   snprintf(sql, sizeof(sql), "SELECT id, description, amout FROM expenses WHERE week_id = %d;",week_id);
   
   sqlite3_stmt *stmt;
