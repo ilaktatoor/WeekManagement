@@ -13,6 +13,10 @@ void handle_errmsg(int rc, char *errmsg){
 
 }
 
+void close_db(sqlite3 **db){
+  sqlite3_close(*db);  
+}
+
 void initialize_db(sqlite3 **db){
   int rc = sqlite3_open("expenses.db", db);
   if(rc){

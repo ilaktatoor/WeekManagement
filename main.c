@@ -36,13 +36,13 @@ int main(){
       scanf("%f",&amount);
       getchar();
 
-      insert_week_to_db(db, week_id,description, amount);
+      insert_expense(db, description, amount);
     
     }else if(choise == 3){
       //Edit expenses
       int expense_id;
       printf("Enter expense id to edit it: ");
-      scanf("%d",expense_id);
+      scanf("%d",&expense_id);
       getchar();
 
       char new_description[MAX_INPUT_SIZE];
@@ -75,7 +75,7 @@ int main(){
   
   }
   
-  close_db(db);
+  close_db(&db);
   return 0;
 }
 

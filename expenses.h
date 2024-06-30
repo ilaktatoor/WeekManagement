@@ -35,7 +35,7 @@ void show_expenses_of_week(sqlite3 *db, int week_id);
 void edit_expense_on_db(sqlite3 *db, int expense_id,const char* new_expense_descriptoin, float new_amount);
 void list_weeks(sqlite3 *db);
 void handle_errmsg(int rc, char *errmsg);
-void close_db();
+void close_db(sqlite3 **db);
 
 #endif // DEBUG
        //
