@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-
+/**
 void addExpense(WeekClass* week, const char* expense_description, float expense_amount){
 
    week->expenses =  realloc(week->expenses,(week->num_expenses +1)*sizeof(ExpenseClass));
@@ -16,14 +16,14 @@ void addExpense(WeekClass* week, const char* expense_description, float expense_
   week->expenses[week->num_expenses].amount = expense_amount;
   week->num_expenses++;
 }
-
+**/
 void get_input(char* prompt, char *input, size_t size){
   printf("%s", prompt);
   fgets(input, size, stdin);
   input[strcspn(input, "\n")] = '\0'; // Remove trailing newline character
   
 }
-
+/**
 float get_float_input(char *prompt){
   char input[MAX_INPUT_SIZE];
   float value;
@@ -32,7 +32,7 @@ float get_float_input(char *prompt){
   sscanf(input, "%f",&value);
   return(value);
 }
-
+**/
 
 
 // rootatkali

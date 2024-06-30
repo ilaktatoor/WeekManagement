@@ -5,25 +5,25 @@
 #include <stddef.h> //for size_t
 #define MAX_INPUT_SIZE 256 // Define MAX_INPUT_SIZE with your desired maximum size
 //struct declarations
- typedef struct{
+// typedef struct{
 
-  char description[MAX_INPUT_SIZE];
-  float amount;
+//  char description[MAX_INPUT_SIZE];
+//  float amount;
 
-} ExpenseClass;
+//} ExpenseClass;
 
-typedef struct{
+//typedef struct{
 
-  char name[MAX_INPUT_SIZE];
-  ExpenseClass* expenses;
-  int num_expenses;
+//  char name[MAX_INPUT_SIZE];
+//  ExpenseClass* expenses;
+//  int num_expenses;
 
-} WeekClass;
+//} WeekClass;
 
 //function declarations
-void addExpense(WeekClass* week, const char* expense_description, float expense_amount);
+//void addExpense(WeekClass* week, const char* expense_description, float expense_amount);
 void get_input(char* prompt, char* input, size_t size );
-float get_float_input(char* promt);
+//float get_float_input(char* promt);
  
 //db functions
 
