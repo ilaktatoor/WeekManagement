@@ -44,12 +44,12 @@ void create_table_if_not_exist(sqlite3 *db){
 
 }  
 
-void insert_expense(sqlite3 *db,const char* description, float amout){
+void insert_expense(sqlite3 *db,int week_id,const char* description, float amout){
   char sql[MAX_INPUT_SIZE];
-  snprintf(sql, sizeof(sql), "INSERT INTO expenses(description, amout) VALUES ('%s',%.2f);", description, amout);
+  snprintf(sql, sizeof(sql), "INSERT INTO expenses(week_id,description, amout) VALUES (%d,'%s',%.2f);",week_id, description, amout);
 
   char *errmsg = NULL;
-  int rc = sqlite3_exec(db, sql, NULL, 0, &errmsg);
+  int rc = sqlite3_exec(db, sql, 0, 0, &errmsg);
   handle_errmsg(rc, errmsg);  
 }
 
@@ -108,7 +108,7 @@ void list_weeks(sqlite3 *db){
   while (sqlite3_step(stmt) == SQLITE_ROW) {
     int id = sqlite3_column_int(stmt, 0);
     const unsigned char *name = sqlite3_column_text(stmt, 1);
-    printf("Week id: %d, Week name: %s",id, name);
+    printf("Week id: %d, Week name: %s\n",id, name);
   
   }
 

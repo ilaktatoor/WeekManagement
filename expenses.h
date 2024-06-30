@@ -29,7 +29,7 @@ float get_float_input(char* promt);
 
 void initialize_db(sqlite3 **db);
 void create_table_if_not_exist(sqlite3 *db);
-void insert_expense(sqlite3 *db,const char* description, float amount);
+void insert_expense(sqlite3 *db,int week_id,const char* description, float amount);
 void insert_week_to_db(sqlite3 *db, const char* week_name);
 void show_expenses_of_week(sqlite3 *db, int week_id);
 void edit_expense_on_db(sqlite3 *db, int expense_id,const char* new_expense_descriptoin, float new_amount);

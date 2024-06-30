@@ -12,14 +12,14 @@ int main(){
   while (1) {
     printf("\n1. Add week\n2. Select week to add expense\n3. Edit expense\n4. Show expenses of a week\n5. List weeks\n6. Exit\n");
     int choise;
-    printf("Enter your choise:");
+    printf("Enter your choise: ");
     scanf("%d",&choise);
     getchar();
 
     if(choise == 1){
       //Add Week
       char week_name[MAX_INPUT_SIZE];
-      get_input("Enter name of the week", week_name, sizeof(week_name));
+      get_input("Enter name of the week: ", week_name, sizeof(week_name));
       insert_week_to_db(db, week_name);
 
     }else if(choise == 2) {
@@ -31,12 +31,12 @@ int main(){
 
       char description[MAX_INPUT_SIZE];
       float amount;
-      get_input("Enter expense description", description, sizeof(description));
+      get_input("Enter expense description: ", description, sizeof(description));
       printf("Enter expense amount:$ ");
       scanf("%f",&amount);
       getchar();
 
-      insert_expense(db, description, amount);
+      insert_expense(db,week_id, description, amount);
     
     }else if(choise == 3){
       //Edit expenses
