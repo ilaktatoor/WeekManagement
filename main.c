@@ -40,6 +40,19 @@ int main(){
     
     }else if(choise == 3){
       //Edit expenses
+      int expense_id;
+      printf("Enter expense id to edit it: ");
+      scanf("%d",expense_id);
+      getchar();
+
+      char new_description[MAX_INPUT_SIZE];
+      float new_amount;
+      get_input("Enter new expense description: ", new_description, sizeof(new_description));
+      printf("Enter new amount value:$ ");
+      scanf("%f",&new_amount);
+      getchar();
+
+      edit_expense_on_db(db, expense_id, new_description, new_amount);
 
     }else if(choise == 4){
       //show expenses of a week
